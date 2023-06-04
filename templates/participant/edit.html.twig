@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un participant Participant{% endblock %}
+
+{% block body %}
+    <h1>Modifier un participant</h1>
+
+    {{ include('participant/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a class="btn btn-warning "href="{{ path('app_participant_index') }}">Revenir à la liste</a>
+
+    {{ include('participant/_delete_form.html.twig') }}
+{% endblock %}

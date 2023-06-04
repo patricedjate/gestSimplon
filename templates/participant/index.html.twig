@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Participants{% endblock %}
+
+{% block body %}
+    <h1>Liste des Participants</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenoms</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participant in participants %}
+            <tr>
+                <td>{{ participant.id }}</td>
+                <td>{{ participant.nom }}</td>
+                <td>{{ participant.prenoms }}</td>
+                <td>{{ participant.contact }}</td>
+                <td>{{ participant.email }}</td>
+                <td>
+                    <a class="btn btn-primary"href="{{ path('app_participant_show', {'id': participant.id}) }}">Voir</a>
+                    <a class="btn btn-success" href="{{ path('app_participant_edit', {'id': participant.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-warning mt-2" href="{{ path('app_participant_new') }}">Ajouter un participant</a>
+{% endblock %}
